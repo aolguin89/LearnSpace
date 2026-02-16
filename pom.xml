@@ -20,7 +20,7 @@
   </properties>
 
   <dependencies>
-    <!-- 1. Servlet API (Motor de Java Web) -->
+    <!-- 1. Servlet API -->
     <!-- Scope PROVIDED: Tomcat native, do not WAR package  -->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -43,6 +43,7 @@
       <version>1.2</version>
     </dependency>
 
+    <!-- 4 JUnit -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
@@ -53,7 +54,7 @@
 
   <build>
     <finalName>LearnSpace</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (maybe moved to parent pom) -->
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
