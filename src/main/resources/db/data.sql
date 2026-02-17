@@ -1,0 +1,2 @@
+-- Placeholder for test data
+-- Will be populated after schema.sql is complete
