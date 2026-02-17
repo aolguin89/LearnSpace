@@ -10,14 +10,16 @@ USE learnspace_db;
 -- =============================================
 -- USERS
 -- =============================================
-INSERT INTO users (username, email, password, first_name, last_name, dni, phone, gender, role)
+INSERT INTO users (username, email, password, first_name, last_name, dni, address, phone, birth_date, gender, role)
 VALUES ('admin',
         'admin@learnspace.com',
         SHA2('admin123', 256),
         'Admin',
         'Sistema',
         '00000000',
-        '(0358) 100000',
+        'Av. España 464, Río Cuarto, Córdoba',
+        '(0358) 4676500',
+        '1985-01-01',
         'M',
         'admin'),
        ('jperez',
@@ -26,7 +28,9 @@ VALUES ('admin',
         'Juan',
         'Pérez',
         '20111222',
-        '(0358) 111222',
+        'Sadi Carnot 1405, Río Cuarto, Córdoba',
+        '(0358) 4623100',
+        '1978-03-22',
         'M',
         'professor'),
        ('mgarcia',
@@ -35,7 +39,9 @@ VALUES ('admin',
         'María',
         'García',
         '25333444',
-        '(0358) 333444',
+        'Bv. Roca 870, Río Cuarto, Córdoba',
+        '(0358) 4631200',
+        '1982-07-14',
         'F',
         'professor'),
        ('clopez',
@@ -44,7 +50,9 @@ VALUES ('admin',
         'Carlos',
         'López',
         '38555666',
-        '(0358) 555666',
+        'Belgrano 750, Las Higueras, Córdoba',
+        '(0358) 4645300',
+        '2001-11-05',
         'M',
         'student'),
        ('lmartinez',
@@ -53,7 +61,9 @@ VALUES ('admin',
         'Laura',
         'Martínez',
         '40777888',
-        '(0358) 777888',
+        'Cap. Castagnari 320, Las Higueras, Córdoba',
+        '(0358) 4658400',
+        '2003-04-18',
         'F',
         'student'),
        ('psanchez',
@@ -62,7 +72,9 @@ VALUES ('admin',
         'Pedro',
         'Sánchez',
         '42999000',
-        '(0358) 999000',
+        'Lavalle 540, Río Cuarto, Córdoba',
+        '(0358) 4661500',
+        '2002-09-30',
         'M',
         'student');
 
@@ -76,36 +88,32 @@ VALUES ('CS101',
         30,
         '2026-03-01',
         '2026-07-31',
-        2 -- jperez
-       ),
+        2),
        ('DB201',
         'Bases de Datos Relacionales',
         'Fundamentos de bases de datos relacionales. SQL, diseño de esquemas, normalización y optimización de consultas.',
         25,
         '2026-03-01',
         '2026-07-31',
-        2 -- jperez
-       ),
+        2),
        ('WEB301',
         'Desarrollo Web con JSP y Servlets',
         'Desarrollo de aplicaciones web con Java EE. JSP, Servlets, patrón MVC y conexión a bases de datos.',
         20,
         '2026-03-01',
         '2026-07-31',
-        3 -- mgarcia
-       );
+        3);
 
 -- =============================================
 -- ENROLLMENTS
 -- =============================================
 INSERT INTO enrollments (user_id, course_id, status)
-VALUES (4, 1, 'active'), -- clopez en CS101
-       (4, 2, 'active'), -- clopez en DB201
-       (5, 1, 'active'), -- lmartinez en CS101
-       (5, 3, 'active'), -- lmartinez en WEB301
-       (6, 2, 'active'), -- psanchez en DB201
+VALUES (4, 1, 'active'),
+       (4, 2, 'active'),
+       (5, 1, 'active'),
+       (5, 3, 'active'),
+       (6, 2, 'active'),
        (6, 3, 'active');
--- psanchez en WEB301
 
 -- =============================================
 -- EXAMS
@@ -149,23 +157,23 @@ VALUES (1,
 -- EXAM ATTEMPTS
 -- =============================================
 INSERT INTO exam_attempts (exam_id, user_id, attempt_number, score, submitted_at, time_spent_minutes, status, feedback)
-VALUES (1, -- Parcial 1 Java
-        4, -- clopez
+VALUES (1,
+        4,
         1,
         75.00,
         '2026-04-03 10:30:00',
         80,
         'graded',
         'Buen manejo de los conceptos básicos. Revisar estructuras de control.'),
-       (1, -- Parcial 1 Java
-        5, -- lmartinez
+       (1,
+        5,
         1,
         55.00,
         '2026-04-04 14:00:00',
         88,
         'graded',
         'Necesita reforzar el concepto de métodos y su alcance.'),
-       (1, -- Parcial 1 Java (segundo intento de lmartinez)
+       (1,
         5,
         2,
         72.00,
@@ -173,8 +181,8 @@ VALUES (1, -- Parcial 1 Java
         75,
         'graded',
         'Mejoró notablemente. Aprobado.'),
-       (3, -- Parcial 1 SQL
-        6, -- psanchez
+       (3,
+        6,
         1,
         88.00,
         '2026-04-02 11:00:00',
