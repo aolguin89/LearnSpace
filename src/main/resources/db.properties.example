@@ -5,7 +5,7 @@
 # The db.properties file is gitignored for security
 
 # Database connection URL
-db.url=jdbc:mysql://localhost:3306/learnspace_db?useSSL=false&serverTimezone=UTC
+db.url=jdbc:mysql://localhost:3306/learnspace_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
 
 # Database credentials
 db.user=YOUR_DB_USER
