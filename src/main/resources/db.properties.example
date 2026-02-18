@@ -1,0 +1,15 @@
+# =============================================
+# LearnSpace - Database Configuration Template
+# =============================================
+# Copy this file to db.properties and fill in your local credentials
+# The db.properties file is gitignored for security
+
+# Database connection URL
+db.url=jdbc:mysql://localhost:3306/learnspace_db?useSSL=false&serverTimezone=UTC
+
+# Database credentials
+db.user=YOUR_DB_USER
+db.password=YOUR_DB_PASSWORD
+
+# JDBC Driver (do not change unless using different database)
+db.driver=com.mysql.cj.jdbc.Driver

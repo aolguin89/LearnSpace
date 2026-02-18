@@ -54,3 +54,9 @@ logs/
 
 # Smart Tomcat plugin temp files
 .smarttomcat/
+
+### Database credentials ###
+src/main/resources/db.properties
+
+### Manual tests ###
+src/main/java/ar/edu/unrc/citic/util/test/
