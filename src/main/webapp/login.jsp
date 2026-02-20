@@ -45,6 +45,18 @@
                     </div>
                     <% } %>
 
+                    <%-- Registration success message --%>
+                    <%
+                        String registeredParam = request.getParameter("registered");
+                        boolean registered = "true".equals(registeredParam);
+                    %>
+                    <% if (registered) { %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        ¡Cuenta creada exitosamente! Ahora podés iniciar sesión.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <% } %>
+
                     <%-- Error message --%>
                     <% if (errorMessage != null) { %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -96,6 +108,16 @@
                     <small>UNRC &bull; CITIC &bull; EVELiA Stack</small>
                 </div>
 
+            </div>
+
+            <%-- Register link --%>
+            <div class="mt-3 text-center">
+                <small class="text-muted">
+                    ¿No tenés cuenta?
+                    <a href="${pageContext.request.contextPath}/register.jsp" class="text-decoration-none">
+                        Registrate acá
+                    </a>
+                </small>
             </div>
 
             <%-- Test users hint --%>
