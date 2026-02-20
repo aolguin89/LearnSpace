@@ -6,6 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    boolean isAuthenticated = (session != null && session.getAttribute("userId") != null);
+    String userFirstName = isAuthenticated ? (String) session.getAttribute("firstName") : null;
+%>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
 
@@ -30,11 +35,33 @@
                         Inicio
                     </a>
                 </li>
+
+                <% if (isAuthenticated) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/dashboard">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        👤 <%= userFirstName %>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/logout">
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <% } else { %>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login.jsp">
                         Iniciar Sesión
                     </a>
                 </li>
+                <% } %>
             </ul>
         </div>
 

@@ -6,6 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    // If already logged in, redirect to dashboard
+    if (session != null && session.getAttribute("userId") != null) {
+        response.sendRedirect(request.getContextPath() + "/dashboard");
+        return;
+    }
+
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    String username = (String) request.getAttribute("username");
+    String logoutParam = request.getParameter("logout");
+    boolean loggedOut = "true".equals(logoutParam);
+%>
 
 <jsp:include page="/WEB-INF/includes/header.jsp">
     <jsp:param name="title" value="Iniciar Sesión - LearnSpace"/>
@@ -25,17 +37,23 @@
 
                 <div class="card-body p-4">
 
-                    <%-- Error message (will be used when backend is implemented) --%>
-                    <%
-                        String errorMsg = (String) request.getAttribute("errorMessage");
-                        if (errorMsg != null) {
-                    %>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <%= errorMsg %>
+                    <%-- Logout success message --%>
+                    <% if (loggedOut) { %>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        Has cerrado sesión correctamente.
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                     <% } %>
 
+                    <%-- Error message --%>
+                    <% if (errorMessage != null) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= errorMessage %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <% } %>
+
+                    <%-- Login form --%>
                     <form action="${pageContext.request.contextPath}/login" method="post">
 
                         <div class="mb-3">
@@ -47,6 +65,7 @@
                                    id="username"
                                    name="username"
                                    placeholder="Ingresá tu usuario"
+                                   value="<%= username != null ? username : "" %>"
                                    required
                                    autofocus>
                         </div>
@@ -78,6 +97,15 @@
                 </div>
 
             </div>
+
+            <%-- Test users hint --%>
+            <div class="mt-3 text-center">
+                <small class="text-muted">
+                    <strong>Usuarios de prueba:</strong><br>
+                    admin/admin123 | jperez/prof123 | clopez/est123
+                </small>
+            </div>
+
         </div>
     </div>
 </main>
