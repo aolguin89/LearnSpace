@@ -214,9 +214,9 @@
 
                     <hr class="my-4">
 
-                    <%-- Danger Zone --%>
+                    <%-- Account deactivation --%>
                     <div class="border border-danger rounded p-3">
-                        <h6 class="text-danger mb-3">⚠️ Zona de Peligro</h6>
+                        <h6 class="text-danger mb-3">⚠️ Desactivación de Cuenta</h6>
                         <p class="text-muted small mb-3">
                             Una vez que desactives tu cuenta, no podrás iniciar sesión nuevamente.
                             Tus datos se conservarán en el sistema pero tu cuenta quedará inactiva.
