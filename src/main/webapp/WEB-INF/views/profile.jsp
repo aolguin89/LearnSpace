@@ -212,6 +212,24 @@
 
                     </form>
 
+                    <hr class="my-4">
+
+                    <%-- Account deactivation --%>
+                    <div class="border border-danger rounded p-3">
+                        <h6 class="text-danger mb-3">⚠️ Desactivación de Cuenta</h6>
+                        <p class="text-muted small mb-3">
+                            Una vez que desactives tu cuenta, no podrás iniciar sesión nuevamente.
+                            Tus datos se conservarán en el sistema pero tu cuenta quedará inactiva.
+                            Solo un administrador puede reactivar tu cuenta.
+                        </p>
+                        <button type="button"
+                                class="btn btn-outline-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deactivateModal">
+                            🗑️ Desactivar Mi Cuenta
+                        </button>
+                    </div>
+
                 </div>
 
                 <div class="card-footer text-muted text-center py-3">
@@ -225,5 +243,41 @@
         </div>
     </div>
 </main>
+
+<%-- Deactivation Confirmation Modal --%>
+<div class="modal fade" id="deactivateModal" tabindex="-1" aria-labelledby="deactivateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deactivateModalLabel">⚠️ Confirmar Desactivación</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="fw-bold">¿Estás seguro que querés desactivar tu cuenta?</p>
+                <p class="mb-2">Esto significa que:</p>
+                <ul class="text-muted">
+                    <li>No podrás iniciar sesión</li>
+                    <li>No podrás acceder a tus cursos</li>
+                    <li>No podrás rendir exámenes</li>
+                    <li>Tus datos permanecerán en el sistema</li>
+                </ul>
+                <div class="alert alert-warning mt-3 mb-0">
+                    <strong>Nota:</strong> Solo un administrador puede reactivar tu cuenta.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+                <form action="${pageContext.request.contextPath}/deactivate-account" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-danger">
+                        Sí, Desactivar Mi Cuenta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <jsp:include page="/WEB-INF/includes/footer.jsp"/>

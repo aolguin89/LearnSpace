@@ -57,6 +57,19 @@
                     </div>
                     <% } %>
 
+                    <%-- Account deactivated message --%>
+                    <%
+                        String deactivatedParam = request.getParameter("deactivated");
+                        boolean deactivated = "true".equals(deactivatedParam);
+                    %>
+                    <% if (deactivated) { %>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        Tu cuenta ha sido desactivada exitosamente. Si necesitás reactivarla, contactá a un
+                        administrador.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <% } %>
+
                     <%-- Error message --%>
                     <% if (errorMessage != null) { %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">

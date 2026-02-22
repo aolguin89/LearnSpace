@@ -58,6 +58,13 @@ public class ProfileServlet extends HttpServlet {
             return;
         }
 
+        // Check for deactivation error
+        String error = request.getParameter("error");
+        if ("deactivation_failed".equals(error)) {
+            request.setAttribute("errors",
+                    java.util.Collections.singletonList("Error al desactivar la cuenta. Por favor, intente nuevamente."));
+        }
+
         // Set user as request attribute for the form
         request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(request, response);
